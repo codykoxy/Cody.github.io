@@ -3,90 +3,143 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>All Tools - Cody Hub</title>
+<title>Cody Hub — Nothing Style</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&family=DotGothic16&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box}
 body{
   margin:0;
-  font-family:'Poppins',sans-serif;
-  background:linear-gradient(135deg,#020617,#0f172a);
-  color:white;
+  font-family:'IBM Plex Mono', monospace;
+  background:#000;
+  color:#e5e7eb;
+}
+
+/* subtle dotted grid */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size:18px 18px;
+  pointer-events:none;
 }
 
 header{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:15px 30px;
-  background:rgba(2,6,23,0.8);
-  backdrop-filter:blur(10px);
-  position:sticky;
-  top:0;
+  padding:16px 24px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(6px);
+  position:sticky;top:0;background:rgba(0,0,0,0.6);
 }
 
-h1{color:#38bdf8}
+.brand{
+  letter-spacing:2px;
+  color:#fff;
+}
+
 nav a{
-  color:white;
-  margin-left:15px;
+  color:#aaa;
   text-decoration:none;
+  margin-left:16px;
 }
-nav a:hover{color:#38bdf8}
+nav a:hover{color:#fff}
 
-.container{
-  max-width:1100px;
-  margin:auto;
-  padding:30px 15px;
+.hero{
+  text-align:center;
+  padding:80px 20px 40px;
 }
+
+/* REAL dot-matrix text */
+.dot{
+  font-family:'DotGothic16', monospace;
+  font-size:52px;
+  letter-spacing:6px;
+  color:#fff;
+  text-shadow:
+    0 0 2px #fff,
+    0 0 10px rgba(255,255,255,0.7),
+    0 0 20px rgba(255,255,255,0.4);
+  animation: flicker 2s infinite alternate;
+}
+
+@keyframes flicker{
+  0%{opacity:1}
+  50%{opacity:0.85}
+  100%{opacity:1}
+}
+
+.sub{
+  margin-top:10px;
+  color:#9ca3af;
+}
+
+.cta{
+  margin-top:24px;
+  display:inline-block;
+  padding:14px 28px;
+  border-radius:30px;
+  background:#111;
+  border:1px solid rgba(255,255,255,0.2);
+  color:#fff;
+  cursor:pointer;
+}
+.cta:hover{box-shadow:0 0 12px rgba(255,255,255,0.4)}
+
+.container{max-width:1100px;margin:auto;padding:20px}
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
 }
 
 .card{
-  background:#1e293b;
-  padding:20px;
-  border-radius:20px;
-  transition:0.3s;
-  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:18px;
+  padding:18px;
+  backdrop-filter:blur(8px);
+  transition:.25s;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 16px rgba(255,255,255,0.25);
 }
 
-.card:hover{
-  transform:translateY(-8px) scale(1.02);
-  background:#334155;
-}
+h3{color:#fff;font-weight:500}
 
 input,textarea{
   width:100%;
-  padding:10px;
   margin-top:10px;
+  padding:10px;
   border-radius:10px;
-  border:none;
+  border:1px solid rgba(255,255,255,0.15);
+  background:#0b0b0b;
+  color:#fff;
 }
 
 button{
+  width:100%;
   margin-top:10px;
   padding:10px;
-  width:100%;
-  border:none;
   border-radius:10px;
-  background:#38bdf8;
-  font-weight:bold;
+  border:1px solid rgba(255,255,255,0.2);
+  background:#111;
+  color:#fff;
   cursor:pointer;
 }
+button:hover{box-shadow:0 0 10px rgba(255,255,255,0.4)}
 
-button:hover{opacity:0.8}
-
-.result{margin-top:10px;color:#38bdf8;font-weight:600}
+.result{margin-top:8px;color:#d1d5db}
 
 footer{
   text-align:center;
-  padding:20px;
-  color:#94a3b8;
+  padding:24px;
+  color:#6b7280;
 }
 </style>
 </head>
@@ -94,16 +147,20 @@ footer{
 <body>
 
 <header>
-  <h1>Cody Hub</h1>
+  <div class="brand">CODY HUB</div>
   <nav>
     <a href="index.html">Home</a>
     <a href="tools.html">Tools</a>
   </nav>
 </header>
 
-<div class="container">
-  <h2 style="text-align:center">🔥 All Tools</h2>
+<section class="hero">
+  <div class="dot">CODY HUB</div>
+  <div class="sub">Here’s why NOTHING should hire me</div>
+  <button class="cta" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">Explore Tools</button>
+</section>
 
+<div class="container" id="tools">
   <div class="grid">
 
     <div class="card">
@@ -173,16 +230,16 @@ footer{
 </div>
 
 <footer>
-  © 2026 Cody Hub 🚀
+  © 2026 Cody Hub — Nothing Style
 </footer>
 
 <script>
 function countWords(){let t=text.value.trim().split(/\s+/).filter(x=>x);wordRes.innerText=t.length}
-function genPass(){let l=len.value||8,c="abcABC123!@#",p="";for(let i=0;i<l;i++)p+=c[Math.floor(Math.random()*c.length)];passRes.innerText=p}
+function genPass(){let l=len.value||8,c="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",p="";for(let i=0;i<l;i++)p+=c[Math.floor(Math.random()*c.length)];passRes.innerText=p}
 function upper(){case.value=case.value.toUpperCase()}
 function lower(){case.value=case.value.toLowerCase()}
 function cgpa(){let m=marks.value.split(',').map(Number);cgRes.innerText=(m.reduce((a,b)=>a+b)/m.length/10).toFixed(2)}
-function palin(){let s=pal.value.toLowerCase();palRes.innerText=(s==s.split('').reverse().join(''))?"Yes":"No"}
+function palin(){let s=pal.value.toLowerCase().replace(/[^a-z0-9]/g,'');palRes.innerText=(s==s.split('').reverse().join(''))?"Yes":"No"}
 function rand(){let a=parseInt(min.value),b=parseInt(max.value);randRes.innerText=Math.floor(Math.random()*(b-a+1))+a}
 function calcFun(){try{calcRes.innerText=eval(calc.value)}catch{calcRes.innerText="Error"}}
 function charCount(){charRes.innerText=char.value.length}
