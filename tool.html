@@ -1,0 +1,39 @@
+<!-- ================= TOOLS.HTML ================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tools</title>
+<style>
+body{font-family:Arial;margin:0;background:#0f172a;color:white;text-align:center}
+header{padding:20px;background:#020617}
+a{color:#38bdf8;margin:10px;text-decoration:none}
+.tool{background:#1e293b;margin:20px;padding:20px;border-radius:10px}
+input,textarea{width:90%;padding:10px;margin-top:10px}
+button{padding:10px;margin-top:10px}
+</style>
+</head>
+<body>
+<header>
+<h1>Tools</h1>
+<a href="index.html">Home</a>
+</header>
+
+<div class="tool">
+<h3>Word Counter</h3>
+<textarea id="text"></textarea>
+<button onclick="count()">Count</button>
+<p id="res"></p>
+</div>
+
+<script>
+function count(){
+let t=document.getElementById('text').value;
+let w=t.trim().split(/\s+/).filter(x=>x);
+document.getElementById('res').innerText=w.length;
+}
+</script>
+
+</body>
+</html>
